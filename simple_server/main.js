@@ -1,21 +1,37 @@
-const port = 3000,
-	http = require("http"),
-	httpStatus = require("http-status-codes"),
+  const getJSONString = obj => {
+    return JSON.stringify(obj , null ,2);
+	};
 
-	app = http.createServer(( request, response) => {
-	
-		console.log("recived an incoming request!");
-		response.writeHead(httpStatus.OK , {
-                  "Content-Type": "text/html"
-		});
+  const port = 3000,
+	http = require("http")
+        httpStatus = require("http-status-codes")
+  app = http.createServer();
 
 
-	let responseMessage = "<h1> Hello Universe! </h1>";
-	response.write(responseMessage);
-	response.end();
+  app.on("request", (req,res) => {
+  var body = [];
+	req.on("data", (bodyData) => {
+		body.push(bodyData);
+	});
 
-	console.log("sent response : ${responseMessage}");
-  });
+	req.on("end", () => {
+    body = Buffer.concat(body).toString();
+		console.log(`request body contents ${body}`)
+	});
+
+	// console.log(body)
+	console.log(`Method: ${getJSONString(req.method)}`)
+	console.log(`URL: ${getJSONString(req.url)}`)
+	console.log(`Headers: ${getJSONString(req.headers)}`)
+
+  res.writeHead(httpStatus.OK, {
+		"Content~Type" : "text/html"
+	});
+
+  let responseMessage = "<h1>This will show on the screen.</h1>"
+	res.end(responseMessage);
+
+	});
 
 	app.listen(port);
 	console.log(`the server has started and is listeninng on port number: ${port}`);
