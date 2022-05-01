@@ -1,6 +1,6 @@
 const port = 3000,
 	http = require("http"),
-	hppStatus = require("http-status-codes"),
+	httpStatus = require("http-status-codes"),
 
 	app = http.createServer(( request, response) => {
 	
@@ -10,12 +10,12 @@ const port = 3000,
 		});
 
 
-	let responseMessage = "<h1>Hello Universe!</h1>";
+	let responseMessage = "<h1> Hello Universe! </h1>";
 	response.write(responseMessage);
 	response.end();
 
-	console.log("sent response :${ responseMessage}");
-        
+	console.log("sent response : ${responseMessage}");
+  });
+
 	app.listen(port);
-	console.log("the server has started and is listeninng on port number: ${port} ");
-		
+	console.log(`the server has started and is listeninng on port number: ${port}`);
