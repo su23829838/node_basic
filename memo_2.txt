@@ -1,5 +1,4 @@
-
- node. how to operation add 
-
-
-
+・node init したときに生成される　package.json の中のdepandencies に記載されたパッケージは、
+npm install すると自動的にインストールされる。
+git hub からpull したときに npm install ejs とか具体的にパッケージを指定して
+インストールする必要ない
