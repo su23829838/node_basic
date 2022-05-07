@@ -10,3 +10,5 @@ sudo mongod --dbpath db
 ```
 node app.js
 ```
+
+## 3. MongoDBを起動
